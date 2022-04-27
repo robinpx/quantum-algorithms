@@ -12,9 +12,13 @@
 * Contacted Tim about Hello World demo error
     * Error in regards to system type (Unix is fine)
 
+### *Robin's computer charger breaks... and lockdown continues* 💻  &nbsp; 😢
+
 ## Day 3 - 4/14 
 * Reading about [Google’s research](https://www.nature.com/articles/s41586-019-1666-5) *again*
 * Looking at Tim’s [lectures on quantum circuits](https://www.youtube.com/watch?v=J8blNmEL28k&list=PLo0Vs5tDeRLTT2sdtt7zoWWB6KOgpnXxo&ab_channel=NYUQuantumTechnologyLab)
+
+### *Found computer charger ... and lockdown continues* 💻  &nbsp; 🥲
 
 ## Day 4 - 4/21
 * Clarifying understanding of Google’s circuits
@@ -52,7 +56,7 @@ for seed in numInstances:
 * [Refer to supplementary information by Google](https://static-content.springer.com/esm/art%3A10.1038%2Fs41586-019-1666-5/MediaObjects/41586_2019_1666_MOESM1_ESM.pdf)
 * Named X, Y gates but what one-two qubit gates specifically?
     * [Stack Exchange: *Understanding Google's “Quantum supremacy using a programmable superconducting processor” (Part 1): choice of gate set*](https://quantumcomputing.stackexchange.com/questions/8337/understanding-googles-quantum-supremacy-using-a-programmable-superconducting-p)
-* Quantum supremacy close analysis, mathematically, [see this](https://arxiv.org/pdf/2007.07872.pdf)
+* Demonstrating quantum supremacy close analysis, in math, [see this](https://arxiv.org/pdf/2007.07872.pdf)
     * ```pv(|x>) = pu(x) = |<a1a2...an|u>|^2 = |<x|u>|^2```
     * ...The probability, given a quantum circuit defined by the unitary operator ```U```, of observing the basis state ```|x>``` (or bitstring x)
     * In other words, to sample a *quantum circuit* is to evolve the circuit with a unitary operator ```U```, then measure each qubit in the resulting system to obtain a bitstring ```x```. By sampling bitstrings we can obtain ```pu(x)``` for each bitstring.
@@ -63,8 +67,20 @@ for seed in numInstances:
             * Say if we give our classical algorithm more resources and/or increase the error rate in our quantum circuit, there is a point where probabilities converge. 
             * Say if we make the error rate of quantum circuit low enough, we can observe a difference. That is represented by *m* [see p.4](https://arxiv.org/pdf/2007.07872.pdf).
         * "If your quantum circuit is good enough - that is the per gate error rate is low and you perform the sampling experience...you can find on average ```log(Pr(S) - logPr(Scl)) ≈ m```, difference we should see between quantum circuit and classical simulation. 
+
 ### Notes
-* As per [Google's supplementary information](https://static-content.springer.com/esm/art%3A10.1038%2Fs41586-019-1666-5/MediaObjects/41586_2019_1666_MOESM1_ESM.pdf), X, Y gates belong to the single-qubit [Clifford group](https://en.wikipedia.org/wiki/Clifford_gates) while W is a non-Clifford gate.
-* Google implements a pseudo-random quantum circuit of *circuit of depth 20 with 430 2-qubit and 1113 1-qubit gates*
-* [Qiskit gates](https://qiskit.org/textbook/ch-states/single-qubit-gates.html) 
-* [Qiskit Circuit Library](https://qiskit.org/documentation/apidoc/circuit_library.html)
+* ```sqrt(X)```, ```sqrt(Y)``` gates belong to the single-qubit [Clifford group](https://en.wikipedia.org/wiki/Clifford_gates) while ```sqrt(W)``` is a non-Clifford gate that uses ```sqrt(X)+sqrt(Y)```.
+* **Found implementation of [```sqrt(X)``` gate](https://qiskit.org/documentation/stubs/qiskit.circuit.library.SXGate.html#qiskit.circuit.library.SXGate), [github of sx gate](https://github.com/Qiskit/qiskit-terra/blob/7bc7f08bf64aa686694467e8f8be551e0b740213/qiskit/circuit/library/standard_gates/sx.py); however, no implementation of ```sqrt(Y)``` gate.**
+* Google implements a pseudo-random quantum circuit of *circuit of depth 20 with 430 2-qubit and 1113 1-qubit gates*, note implmentation will be incomplete 
+
+### References
+* As per [Google's supplementary information](https://static-content.springer.com/esm/art%3A10.1038%2Fs41586-019-1666-5/MediaObjects/41586_2019_1666_MOESM1_ESM.pdf)<br></br>
+![quantum-gates](Quantum_gates.png) 
+* [Qiskit SX Gate Code](https://github.com/Qiskit/qiskit-terra/blob/7bc7f08bf64aa686694467e8f8be551e0b740213/qiskit/circuit/library/standard_gates/sx.py)
+* [Qiskit X Gate Code](https://github.com/Qiskit/qiskit-terra/blob/7bc7f08bf64aa686694467e8f8be551e0b740213/qiskit/circuit/library/standard_gates/x.py)
+* [Qiskit Y Gate Code](https://github.com/Qiskit/qiskit-terra/blob/7bc7f08bf64aa686694467e8f8be551e0b740213/qiskit/circuit/library/standard_gates/y.py)
+* [Qiskit Gates](https://qiskit.org/textbook/ch-states/single-qubit-gates.html) 
+* [Qiskit Standard Circuit Library](https://qiskit.org/documentation/apidoc/circuit_library.html)
+* [Qiskit Entire Gates Library Code](https://github.com/Qiskit/qiskit-terra/tree/7bc7f08bf64aa686694467e8f8be551e0b740213/qiskit/circuit/library/standard_gates)
+
+## Day 6 - 4/28

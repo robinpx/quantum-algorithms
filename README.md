@@ -8,4 +8,4 @@ We are developing a series of experiments using Qiskit and IBM Q to run a quantu
 * Qiskit (Python)
 * Jupyter Notebook
 
-### [code](./code) &nbsp; [documentation](./documentation/)
+### [code](./code) &nbsp; [documentation](./documentation/DOCS.md)
