@@ -83,4 +83,10 @@ for seed in numInstances:
 * [Qiskit Standard Circuit Library](https://qiskit.org/documentation/apidoc/circuit_library.html)
 * [Qiskit Entire Gates Library Code](https://github.com/Qiskit/qiskit-terra/tree/7bc7f08bf64aa686694467e8f8be551e0b740213/qiskit/circuit/library/standard_gates)
 
-## Day 6 - 4/28
+## Day 6 - 5/4
+Refer to Google doc for recent documentation on Von Neumann Entropy and Shannon Entropy. 
+### References
+* [Entropy of Quantum States](https://arxiv.org/pdf/2104.12611.pdf)
+* [Circuit Basics](https://qiskit.org/documentation/tutorials/circuits/01_circuit_basics.html)
+* [Programming Quantum Information](https://towardsdatascience.com/programming-quantum-information-8f251ec6770)
+* [Qiskit Quantum Circuit](https://github.com/Qiskit/qiskit-terra/blob/7bc7f08bf64aa686694467e8f8be551e0b740213/qiskit/circuit/quantumcircuit.py)
