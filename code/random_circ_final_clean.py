@@ -1,11 +1,11 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[104]:
+# In[1]:
 
 
 import numpy as np
-from qiskit import QuantumCircuit, transpile, assemble, IBMQ, Aer
+from qiskit import QuantumCircuit, transpile, assemble, execute, IBMQ, Aer
 from qiskit.visualization import plot_histogram
 from qiskit.providers.aer import QasmSimulator
 from qiskit.providers.aer.noise import NoiseModel
@@ -18,7 +18,7 @@ circ.measure_all()
 circ.draw("mpl")
 
 
-# In[57]:
+# In[2]:
 
 
 # run on QASM Simulator 
@@ -36,13 +36,13 @@ counts = result_sim.get_counts(qc_compiled)
 print(counts)
 
 
-# In[58]:
+# In[3]:
 
 
 plot_histogram(counts)
 
 
-# In[120]:
+# In[4]:
 
 
 provider=IBMQ.load_account()
@@ -51,42 +51,51 @@ provider.backends()
 # show options for backends
 
 
-# In[121]:
+# In[5]:
 
 
 ibmq_backend = provider.get_backend('ibmq_quito')
 noise_model = NoiseModel.from_backend(ibmq_backend)
 
 
-# In[122]:
+# In[6]:
 
 
 transpiled_circ = transpile(circ, ibmq_backend, optimization_level=3)
 transpiled_circ.draw('mpl')
 
 
-# In[123]:
+# In[8]:
 
 
-assembled_circ = assemble(transpiled_circ, shots=shots)
-sim_job = qasm_sim.run(transpiled_circ, noise_model=noise_model)
+# assembled_circ = assemble(transpiled_circ, shots=shots)
+# sim_job = qasm_sim.run(transpiled_circ, noise_model=noise_model)
+sim_job = execute(transpiled_circ, qasm_sim, shots=shots, noise_model=noise_model)
 sim_result = sim_job.result()
 sim_counts = sim_result.get_counts()
 plot_histogram(sim_counts)
 
 
-# In[ ]:
+# In[10]:
 
 
-real_job = ibmq_backend.run(assembled_circ)
-# real_job = execute(transpiled_circ, ibmq_backend, shots=shots)
+# real_job = ibmq_backend.run(assembled_circ)
+real_job = execute(transpiled_circ, ibmq_backend, shots=shots)
 real_result = real_job.result()
 real_counts = real_result.get_counts()
 
-plot_histogram([sim_counts, real_counts], bar_labels=False)
+plot_histogram([sim_counts, real_counts])
 
 
-# In[72]:
+# In[12]:
+
+
+# observe job, see if it is running or finished
+from qiskit.tools.monitor import job_monitor
+job_monitor(real_job)
+
+
+# In[ ]:
 
 
 from math import log
@@ -105,28 +114,16 @@ for k,v in counts.items():
 print(vn_entropy)
 
 
-# In[74]:
-
-
-# import matplotlib.pyplot as plt
-
-# time = np.arange(0.001, 1., 0.01)
-
-# plt.xlabel('time')
-# plt.ylabel('entropy')
-# plt.title('stuff')
-# plt.plot(time, vn_entropy, color='tab:blue')
-# plt.show()
-
-
 # In[ ]:
 
 
+import matplotlib.pyplot as plt
 
+time = np.arange(0.001, 1., 0.01)
 
-
-# In[ ]:
-
-
-
+plt.xlabel('time')
+plt.ylabel('entropy')
+plt.title('stuff')
+plt.plot(time, vn_entropy, color='tab:blue')
+plt.show()
 
