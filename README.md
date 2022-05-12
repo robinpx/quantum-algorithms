@@ -15,7 +15,7 @@ For our next steps, we recommend running it further on the real IBM Q's Quito,
 looking at the convergence to the Porter-Thomas distribution in order to further our understanding of cross-entropy difference in comparsion to the ideal circuit output and its role in cross-entropy benchmarking. 
 
 Below is a generalized flowchart produced from our research and current understanding of the material.
-![flowchart](/documentation/General_flowchart.png) 
+<img src="/documentation/General_flowchart.png" width="50%" />
 
 ### [code](./code) &nbsp; [documentation](./documentation/DOCS.md)
 
